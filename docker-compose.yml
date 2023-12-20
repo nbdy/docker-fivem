@@ -1,0 +1,6 @@
+version: "3.10"
+services:
+  fivem:
+    build: .
+    ports:
+      - "127.0.0.1:40120:40120"
