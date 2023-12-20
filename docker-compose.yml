@@ -1,20 +1,24 @@
 version: "3.10"
 services:
-  server:
+  fivemsrv:
     build: .
     restart: always
     ports:
+      - "30120:30120"
+      - "30120:30120/udp"
       - "127.0.0.1:40120:40120"
     volumes:
       - "./data:/fivem/txData"
     depends_on:
-      - database
+      - fivemdb
     links:
-      - database
+      - fivemdb
 
-  database:
+  fivemdb:
     image: mariadb:11
     restart: always
+    ports:
+      - "127.0.0.1:43306:3306"
     environment:
       MARIADB_ROOT_PASSWORD: gtadbrootpw
     volumes:

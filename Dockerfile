@@ -11,4 +11,4 @@ RUN wget https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/6683
     tar xf fx.tar.xz ; \
     rm fx.tar.xz
 
-CMD ["/bin/bash", "/fivem/run.sh"]
+ENTRYPOINT ["/bin/bash", "/fivem/run.sh"]
