@@ -1,6 +1,21 @@
 version: "3.10"
 services:
-  fivem:
+  server:
     build: .
+    restart: always
     ports:
       - "127.0.0.1:40120:40120"
+    volumes:
+      - "./data:/fivem/txData"
+    depends_on:
+      - database
+    links:
+      - database
+
+  database:
+    image: mariadb:11
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: gtadbrootpw
+    volumes:
+      - "./database:/var/lib/mysql"
